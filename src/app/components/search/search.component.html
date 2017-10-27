@@ -1,0 +1,15 @@
+<form #searchForm="ngForm" (ngSubmit)="submit(term); searchForm.reset()"  class="form-inline my-2 my-lg-0">
+	<input #search="ngModel" [(ngModel)]="term" type="text" class="form-control" name="term" minlength="3" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	<div *ngIf="search.invalid && search.dirty"
+     class="alert alert-danger">
+      <div *ngIf="search.errors.minlength">
+        Min 3 characters required
+      </div>
+    </div>
+	<button 
+	class="btn btn-outline-success my-2 my-sm-0" 
+	type="submit"
+	[disabled]="searchForm.invalid">
+	Search
+	</button>
+</form>

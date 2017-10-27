@@ -1,0 +1,12 @@
+<ul class="list-group">
+	<li class="list-group-item">
+		<span>Movie id: {{ movie.id}}</span><br>
+		<span>Movie name: {{ movie.name}}</span><br>
+		<span>Director: {{ movie.director}}</span><br>
+		<span>Image URL: {{ movie.imageUrl}}</span><br>
+		<span>Movie duration: {{ movie.duration}}</span><br>
+		<span>Release date: {{ movie.releaseDate}}</span><br>
+		<span>Genres: {{movie.genres }}</span><br>
+		<button type="submit" class="btn btn-primary" (click)="selectMovie(true)" [disabled]="selected">Select</button>
+	</li>
+</ul>
