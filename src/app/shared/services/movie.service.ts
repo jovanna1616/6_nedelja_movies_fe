@@ -12,54 +12,17 @@ export class MovieService {
   constructor(private http: HttpClient) {	}
 
   public getMovies() {
-    return new Observable((o: Observer<any>) => {
-      this.http.get('http://localhost:8000/api/movies')
-        .subscribe(
-        (movies: Array<Movie>) => {
-          movies.forEach(movie => {
-            this.movies.push(new Movie(
-              movie.id,
-              movie.name,
-              movie.director,
-              movie.imageUrl,
-              movie.duration,
-              movie.releaseDate,
-              movie.genres
-            ));
-          });
-        });
-          o.next(this.movies);
-          return o.complete();
-        });
-    }
+    return this.http.get<any>('http://localhost:8000/api/movies');
+  }
 
-    public addMovie(movie: Movie)
-    {
-      return new Observable((o: Observer<any>) => {
-        this.http.post('http://localhost:8000/api/movies', {
-          'name': movie.name,
-          'director': movie.director,
-          'image_url': movie.imageUrl,
-          'duration': movie.duration,
-          'release_date': movie.releaseDate,
-          'genres': movie.genres
-        })
-        .subscribe(
-          (movie: any) => {
-            let newMovie = new Movie(
-              movie.id, 
-              movie.name, 
-              movie.director, 
-              movie.imageUrl, 
-              movie.duration, 
-              movie.releaseDate, 
-              movie.genres
-            );
-            this.movies.push(newMovie);
-            o.next(this.movies);
-            return o.complete();
-          }
-        );
+  public addMovie(movie: Movie) {
+    return this.http.post('http://localhost:8000/api/movies', {
+      'name': movie.name,
+      'director': movie.director,
+      'image_url': movie.imageUrl,
+      'duration': movie.duration,
+      'release_date': movie.releaseDate,
+      'genres': movie.genres
     });
   }
 

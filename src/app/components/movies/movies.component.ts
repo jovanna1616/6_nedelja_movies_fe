@@ -21,7 +21,9 @@ export class MoviesComponent implements OnInit {
   constructor(private movieService: MovieService, private router: Router) {
     this.movieService.getMovies().subscribe(movies => {
       this.movies = movies;
+
       console.log(this.movies);
+      console.log(this.movies.length);
    },
    (err: HttpErrorResponse) => {
      alert(`Backend returned code ${err.status} with message: ${err.error}`);
@@ -29,15 +31,7 @@ export class MoviesComponent implements OnInit {
    );
  }
 
-  ngOnInit() {
-  	// this.movieService.getMovies().subscribe(movies => {this.movies = movies});
-  }
-
- //  submitMovie(movie: Movie) {
- //    this.movieService.addMovie(movie).subscribe();
- //    console.log('sad sam u movie componenti');
- //    this.router.navigate(['/movies']);
- // }
+  ngOnInit() {  }
 
   onSelect(selected) {
   	this.count++;
