@@ -1,0 +1,77 @@
+<form #movieForm="ngForm" (ngSubmit)="submitMovie(newMovie); movieForm.reset()">
+    <div class="form-group">
+        <label>Movie Name:</label>
+        <input 
+            #name="ngModel" 
+            [(ngModel)]="newMovie.name" 
+            name='name' 
+            type="text" 
+            class="form-control"
+        >
+    </div>
+
+    <div class="form-group">
+        <label>Director:</label>
+          <input 
+            #director="ngModel" 
+            [(ngModel)]="newMovie.director" 
+            name='director' 
+            type="text" 
+            class="form-control"
+        >
+    </div>
+
+    <div class="form-group">
+        <label>Image URL:</label>
+        <input 
+            #imageUrl="ngModel" 
+            [(ngModel)]="newMovie.imageUrl" 
+            name='imageUrl' 
+            type="text" 
+            class="form-control"
+        >
+    </div>
+
+    <div class="form-group">
+        <label>Duration:</label>
+        <input 
+            #duration="ngModel" 
+            [(ngModel)]="newMovie.duration" 
+            name='duration' 
+            type="number" 
+            class="form-control"
+        >
+    </div>
+
+    <div class="form-group">
+        <label>Release Date:</label>
+        <input 
+            #releaseDate="ngModel" 
+            [(ngModel)]="newMovie.releaseDate" 
+            name='releaseDate' 
+            type="text" 
+            class="form-control"
+        >
+    </div>
+
+    <div class="form-group">
+        <label>Genres:</label>
+        <input 
+            #genres="ngModel" 
+            [(ngModel)]="newMovie.genres" 
+            name='genres' 
+            type="text" 
+            class="form-control"
+        >
+    </div>
+    
+    <button type="button" class="btn"
+        (click)="movieForm.reset()"
+        [disabled]="movieForm.form.pristine">
+        Reset
+    </button>
+    <button type="submit" class="btn btn-primary"
+        [disabled]="!movieForm.form.valid">
+        Add movie
+    </button>
+</form>

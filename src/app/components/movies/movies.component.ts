@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import {  MovieService } from '../../shared/services/movie.service';
 import { Movie } from '../../shared/model/movie';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
@@ -9,18 +11,34 @@ import { Movie } from '../../shared/model/movie';
 })
 export class MoviesComponent implements OnInit {
 	private movies: Array<Movie>;
+
 	private count:number = 0;
 	// opcije kad su svi markirani ili samo neki
 	public selectedAll = false;
   public selectedSome = false;
 
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private router: Router) {
+    this.movieService.getMovies().subscribe(movies => {
+      this.movies = movies;
+      console.log(this.movies);
+   },
+   (err: HttpErrorResponse) => {
+     alert(`Backend returned code ${err.status} with message: ${err.error}`);
+    }
+   );
+ }
 
   ngOnInit() {
-  	this.movieService.getMovies().subscribe(movies => {this.movies = movies});
-  	console.log(this.movies);
+  	// this.movieService.getMovies().subscribe(movies => {this.movies = movies});
   }
+
+  submitMovie(movie: Movie) {
+    this.movieService.addMovie(movie).subscribe();
+    console.log('sad sam u movie componenti');
+    this.router.navigate(['/movies']);
+
+ }
 
   onSelect(selected) {
   	this.count++;
