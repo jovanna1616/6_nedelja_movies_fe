@@ -33,12 +33,11 @@ export class MoviesComponent implements OnInit {
   	// this.movieService.getMovies().subscribe(movies => {this.movies = movies});
   }
 
-  submitMovie(movie: Movie) {
-    this.movieService.addMovie(movie).subscribe();
-    console.log('sad sam u movie componenti');
-    this.router.navigate(['/movies']);
-
- }
+ //  submitMovie(movie: Movie) {
+ //    this.movieService.addMovie(movie).subscribe();
+ //    console.log('sad sam u movie componenti');
+ //    this.router.navigate(['/movies']);
+ // }
 
   onSelect(selected) {
   	this.count++;
