@@ -13,7 +13,7 @@ export class AddMovieComponent implements OnInit {
 
   constructor(private movieService: MovieService, private router: Router) { }
 
-  submitMovie(movie: Movie){
+  submitMovie(movie: Movie) {
    this.movieService.addMovie(movie).subscribe();
    this.newMovie = new Movie();
    this.router.navigate(['/movies']);

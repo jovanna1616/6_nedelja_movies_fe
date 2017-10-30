@@ -31,7 +31,7 @@ export class MovieService {
     const foundedMovies = this.movies.filter((movie: Movie) => {
       return movie.name.includes(term);
     });
-     
+
     return new Observable(observer => {
       observer.next(foundedMovies);
     });

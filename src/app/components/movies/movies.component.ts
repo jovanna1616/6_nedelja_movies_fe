@@ -10,11 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
-	private movies: Array<Movie>;
-
-	private count:number = 0;
-	// opcije kad su svi markirani ili samo neki
-	public selectedAll = false;
+  private movies: Array<Movie>;
+  private count = 0;
+  // opcije kad su svi markirani ili samo neki
+  public selectedAll = false;
   public selectedSome = false;
 
 
